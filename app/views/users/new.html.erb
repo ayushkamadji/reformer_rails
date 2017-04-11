@@ -1,0 +1,36 @@
+<!-- <form accept-charset="UTF-8" action="/users" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="user[username]">Username</label>
+  <input id="user[username]" type="text" name="user[username]">
+  <label for="user[email]">Email</label>
+  <input id="user[email]" type="text" name="user[email]">
+  <label for="user[password]">Password</label>
+  <input id="user[password]" type="password" name="user[password]">
+  <input name="commit" type="submit" value="Sign up">
+</form> -->
+
+<!-- <%= form_tag '/users', method: :post do %>
+  <%= label :user, :name, 'Username' %>
+  <%= text_field :user, :username %>
+  <%= label :user, :email %>
+  <%= text_field :user, :email %>
+  <%= label :user, :password %>
+  <%= password_field :user, :password %>
+  <%= submit_tag("Sign up") %>
+<% end %> -->
+
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit 'Sign up' %>
+<% end %>
